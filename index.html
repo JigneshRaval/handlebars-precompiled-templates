@@ -18,6 +18,16 @@
 			<li><a href="http://www.korenlc.com/precompiling-handlebars-templates/">Precompiling Handlebars Templates</a></li>
 			<li><a href="https://nuunoo.wordpress.com/2013/06/08/javascript-pre-compiled-templates-with-handlebars-js/">Javascript pre-compiled templates with Handlebars.js</a></li>
 		</ul>
+        <p> First install handlebars using "npm install handlebars --save-dev"</p>
+        <p>Write following commands in package.json</p>
+      <pre>"scripts": {
+		"start": "handlebars hello.handlebars -f compiled-templates.js -m",
+		"compile_multiple": "handlebars sample-templates/ > sample-templates/compiled_multiple-templates.js -m"
+	}</pre>
+      <p>in above code "start" and "compile_multiple" is a command name, you can use any name</p>
+      <p>start command will compile only single file and output fill will be compiled-templates.js<br/>
+        while compile_multiple command will compile all the files stored inside sample-templates folder and will output single file named compiled_multiple-templates.js"</p>
+      <p>-m will compress(minify) the output .js file</p>
         <p>If you're working with precompiled templates, you don't need to ship the compiler with your deployed application. Instead, you can use the smaller "runtime" build. <pre>&lt;script src="/libs/handlebars.runtime.js">&lt;/script></pre> In addition to reducing the download size, eliminating client-side compilation will significantly speed up boot time, as compilation is the most expensive part of Handlebars.</p>
 
 		<!-- STEP 1 : Include "handlebars.runtime.min.js" -->
