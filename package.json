@@ -1,0 +1,11 @@
+{
+	"name": "react_example",
+	"dependencies": {},
+	"devDependencies": {
+		"handlebars": "^4.0.5"
+	},
+	"scripts": {
+		"start": "handlebars hello.handlebars -f compiled-templates.js -m",
+		"compile_multiple": "handlebars sample-templates/ > sample-templates/compiled_multiple-templates.js -m"
+	}
+}

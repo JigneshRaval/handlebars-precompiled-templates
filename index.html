@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body { font-family: Arial; font-size: 12px; line-height: 1.5; }
+		</style>
+	</head>
+	<body>
+
+		<div id="outputDiv">
+			<!-- Template data will be displayed here -->
+		</div>
+
+		<h3>Additional Resources</h3>
+		<ul>
+			<li><a href="http://handlebarsjs.com/precompilation.html">Using the Handlebars precompiler command line tool</a></li>
+			<li><a href="http://berzniz.com/post/24743062344/handling-handlebarsjs-like-a-pro">Handling handlebars.js like a pro</a></li>
+			<li><a href="http://www.korenlc.com/precompiling-handlebars-templates/">Precompiling Handlebars Templates</a></li>
+			<li><a href="https://nuunoo.wordpress.com/2013/06/08/javascript-pre-compiled-templates-with-handlebars-js/">Javascript pre-compiled templates with Handlebars.js</a></li>
+		</ul>
+		<!-- STEP 1 : Include "handlebars.runtime.min.js" -->
+		<script src="handlebars.runtime.min.js"></script>
+
+		<!-- STEP 2 : Pre-compile "hello.handlebars" template using handlebars npm module -->
+
+		<!-- STEP 3 : Include precompiled template js file -->
+		<script src="compiled-templates.js"></script>
+
+		<script>
+
+			/*
+				* Example of Helper function
+				* Usage: <b>{{#link "Test" "http://www.google.com"}}{{this}}{{/link}}</b>
+			*/
+			Handlebars.registerHelper('link', function(text, url) {
+				text = Handlebars.Utils.escapeExpression(text);
+				url  = Handlebars.Utils.escapeExpression(url);
+
+				var result = '<a href="' + url + '">' + text + '</a>';
+
+				return new Handlebars.SafeString(result);
+			});
+
+			/*
+				* Load pre-compiled "hello.handlebars" ( compiled-templates.js ) template and bind with data
+			*/
+			var data = {
+				"title" : "Handlebars compilation",
+				"users" : ["Pinaple", "Orange", "Cherry", "Potato"]
+			}
+			var compiledTemplate = Handlebars.templates['hello']; // Pass template name "hello"
+			// var compiledTemplate = Handlebars.templates.hello; // Pass template name "hello" ( alternative way )
+
+			var html = compiledTemplate(data); // Pass data as JSON object to the pre-compiled template
+
+			var outputDiv = document.querySelector('#outputDiv');
+			outputDiv.innerHTML = html;
+		</script>
+
+	</body>
+</html>

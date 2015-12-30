@@ -1,0 +1,20 @@
+<!-- goodbye.handlebars -->
+
+<div id="goodbye_template">
+	<h2>Handlebars precompiled templates example</h2>
+	<p>Goodbye {{title}}</p>
+
+	<!-- Usage of Each helper for looping values -->
+	<ul>
+		{{#each users}}
+		<li>{{this}}</li>
+		{{/each}}
+	</ul>
+
+	<!-- Helper function : "link" -->
+	<b>
+		{{#link "Google" "http://www.google.com"}}
+		{{this}}
+		{{/link}}
+	</b>
+</div>
